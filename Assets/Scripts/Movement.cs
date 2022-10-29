@@ -3,49 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
-
 {
    
-    private int speed = 10;
-    
-    // Start is called before the first frame update
+    public static bool selected = false;
+        
+   
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (selected)
         {
-            Vector3 pos = transform.position;
-            pos += transform.up * Time.deltaTime * speed;
-            transform.position = pos;
+            Vector3 mousePos;
+            mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            this.gameObject.transform.localPosition = new Vector3(mousePos.x, mousePos.y, 0);
         }
-        if (Input.GetKey(KeyCode.S))
+        
+    }
+    private void OnMouseDown()
+    {
+       
+        if (Input.GetMouseButtonDown(0))
         {
-            Vector3 pos = transform.position;
-            pos -= transform.up * Time.deltaTime * speed;
-            transform.position = pos;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            Vector3 pos = transform.position;
-            pos += transform.right * Time.deltaTime * speed;
-            transform.position = pos;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            Vector3 pos = transform.position;
-            pos -= transform.right * Time.deltaTime * speed;
-            transform.position = pos;
+            
+            selected = true;
         }
        
-
     }
-     private void OnCollisionEnter(Collision collision)
+    private void OnMouseUp()
     {
-        Debug.Log("deðdi");
+        selected = false;
     }
+    
+
+
+
 }
