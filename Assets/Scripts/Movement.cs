@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-   
+    [SerializeField] GameObject tools;
     public static bool selected = false;
         
    
@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
             Vector3 mousePos;
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            this.gameObject.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
+            tools.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
             
         }
         
