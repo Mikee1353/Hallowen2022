@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YarasaSol : MonoBehaviour
+public class YarasaAsagi : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -13,6 +13,6 @@ public class YarasaSol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.transform.Translate(Vector3.right * Time.deltaTime);
+        this.gameObject.transform.Translate(Vector3.down * Time.deltaTime);
     }
 }
