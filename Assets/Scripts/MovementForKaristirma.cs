@@ -13,7 +13,7 @@ public class MovementForKaristirma : MonoBehaviour
             Vector3 mouse;
             mouse = Input.mousePosition;
             mouse = Camera.main.ScreenToWorldPoint(mouse);
-            this.gameObject.transform.rotation = Quaternion.AngleAxis(mouse.x,Vector3.right);
+            this.gameObject.transform.rotation = Quaternion.AngleAxis(mouse.x,Vector3.back);
 
         }
         
@@ -21,9 +21,13 @@ public class MovementForKaristirma : MonoBehaviour
     private void OnMouseDown()
     {
         tut = true;
+        Cursor.visible = false;
+        
     }
     private void OnMouseUp()
     {
         tut = false;
+        Cursor.visible = true;
+        
     }
 }
