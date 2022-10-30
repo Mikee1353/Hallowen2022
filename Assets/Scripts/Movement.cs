@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
-{
-    [SerializeField] GameObject tools;
+{    
     public static bool selected = false;
-        
+    public GameObject SelectedObject;    
    
 
     void Start()
@@ -24,8 +23,14 @@ public class Movement : MonoBehaviour
             Vector3 mousePos;
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            tools.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
+            Collider2D targetObject = Physics2D.OverlapPoint(mousePos);
+            if (targetObject)
+            {
+                SelectedObject = targetObject.transform.gameObject;
+                SelectedObject.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
+            }
             
+
         }
         
     }
